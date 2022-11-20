@@ -1,3 +1,3 @@
 # matAppNode
-Backend (node.js) to matAppNode 
-write 'nodemon app or node app' to run the project
+Backend (node.js) to matAppNode .
+Write 'nodemon app or node app' to run the project
