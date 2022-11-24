@@ -1,8 +1,8 @@
 const {Sequelize,DataTypes}=require('sequelize');
 
 //<------ Create Database ---->
-const sequelize=new Sequelize('mat_app_db','root','',{
-    host:'localhost',
+const sequelize=new Sequelize(process.env.DATABASENAME,process.env.DATABASE_USER,'',{
+    host:process.env.DATABASE_HOST,
     dialect:'mysql',
    // logging:false, //To hide all queries from terminal at runtime
     pool:{max:5,min:0,idle:10000},

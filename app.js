@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express=require("express");
 const app=express();
+
 var cors = require('cors');
 const bodyParser=require("body-parser");
 const port=8080;
@@ -25,7 +27,7 @@ app.get('/',(req,res)=>{
     res.send("<h1>Home page</h1>");
 });
 
-
+//console.log('Database is:',process.env.DATABASENAME);
 
 app.listen(port,()=>{
     console.log(`Server listening on ${port}`);
