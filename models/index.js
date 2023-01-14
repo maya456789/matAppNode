@@ -31,6 +31,7 @@ db.sequelize.sync({force:false}).then(()=>{ //force:true Drop all table data for
 db.stocks=require('./available_stock')(sequelize,DataTypes);
 db.customers=require('./add_customer')(sequelize,DataTypes);
 db.categories=require('./add_category')(sequelize,DataTypes);
+db.authuser=require('./uset_auth')(sequelize,DataTypes);
 
 db.sequelize.sync().then(()=>{
     console.log("Re-syncing..");

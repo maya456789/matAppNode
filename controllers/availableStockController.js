@@ -11,12 +11,15 @@ var addToStock=async (req,res)=>{
     let sale_price=req.body.product_sale_price;
     let product_mrp=req.body.product_mrp;
     let product_desc=req.body.product_description;
+   
 
     let data=await AvailableStock.create({
         name:name,description:product_desc,unit:unit,category:category,sale_price:sale_price,
         mrp:product_mrp
     });
-    console.log("Product Name :",name);
+    
+    
+
     var response = data;
      
     res.status(200).json(response);

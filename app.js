@@ -2,6 +2,7 @@ require('dotenv').config();
 const express=require("express");
 const app=express();
 
+
 var cors = require('cors');
 const bodyParser=require("body-parser");
 const port=8080;
@@ -12,8 +13,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 var stockCtrl=require('./controllers/availableStockController');
 var customerCtrl=require('./controllers/customerController');
 var catogaryCtrl=require('./controllers/addCategoryController');
+var authuserCtrl=require('./controllers/authUserController');
+var 
 addDb=require('./models');//Importing index.js file
 
+app.post('/authUser',authuserCtrl.registerUser);
+app.get('/authorizeUser/:uid',authuserCtrl.authorizeUser);
 app.post('/addStock',stockCtrl.addToStock);
 app.post('/addCustomer',customerCtrl.addCustomer);
 app.post('/addCategory',catogaryCtrl.addToCategory);
