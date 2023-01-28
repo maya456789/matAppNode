@@ -25,7 +25,7 @@ app.post('/addCategory',catogaryCtrl.addToCategory);
 
 app.get('/getStock',stockCtrl.getFromStock);
 
-app.post('/deleteStock',stockCtrl.deletFromStock);
+app.delete('/deleteStock/:prodId',stockCtrl.deletFromStock);
 
 
 app.get('/',(req,res)=>{

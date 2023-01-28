@@ -45,7 +45,7 @@ var getFromStock=async (req,resp)=>{
 
 var deletFromStock=async(req,res)=>{
 
-    let p_id=req.body.prodId;
+    let p_id=req.params.prodId;
 
     let data=await AvailableStock.destroy({
         where:{
@@ -54,9 +54,9 @@ var deletFromStock=async(req,res)=>{
         })
      
         console.log('pid:',p_id);
-       var response = data;
+       var response = "Data deleted successfully";
      
-        res.status(204).json(response);
+        res.status(200).json(response);
 }
 
 module.exports={
