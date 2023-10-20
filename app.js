@@ -3,6 +3,7 @@ const express=require("express");
 const app=express();
 
 
+
 var cors = require('cors');
 const bodyParser=require("body-parser");
 const port=8080;
@@ -17,8 +18,9 @@ var authuserCtrl=require('./controllers/authUserController');
 var 
 addDb=require('./models');//Importing index.js file
 
-app.post('/authUser',authuserCtrl.registerUser);
-app.get('/authorizeUser/:uid',authuserCtrl.authorizeUser);
+app.post('/authUser',authuserCtrl.loginUser);
+app.post('/registerUser',authuserCtrl.registerUser);
+app.get('/authorizeUser',verifyToken,authuserCtrl.authorizeUser);
 app.post('/addStock',stockCtrl.addToStock);
 app.post('/addCustomer',customerCtrl.addCustomer);
 app.post('/addCategory',catogaryCtrl.addToCategory);
@@ -31,6 +33,22 @@ app.delete('/deleteStock/:prodId',stockCtrl.deletFromStock);
 app.get('/',(req,res)=>{
     res.send("<h1>Home page</h1>");
 });
+
+function verifyToken(req,resp,next){
+
+    const bearerHeader=req.headers['authorization'];
+   if(typeof bearerHeader !== 'undefined'){
+    
+    const bearer=bearerHeader.split(" ");
+    const token= bearer[1];
+    req.token=token;
+    next();
+   }else{
+       resp.send({
+           result:'Token is not valid'
+       })
+   }
+}
 
 //console.log('Database is:',process.env.DATABASENAME);
 
